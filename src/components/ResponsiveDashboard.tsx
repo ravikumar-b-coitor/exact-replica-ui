@@ -40,7 +40,7 @@ const maintenanceItems = [
 const ResponsiveDashboard: React.FC = () => {
   return (
     <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-4xl">
-      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Hospital Notifications Dashboard</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-left">Hospital Notifications Dashboard</h1>
       
       <div className="space-y-4 sm:space-y-6">
         <ResponsiveNotificationSection 
@@ -69,3 +69,4 @@ const ResponsiveDashboard: React.FC = () => {
 };
 
 export default ResponsiveDashboard;
+
