@@ -67,8 +67,8 @@ const ResponsiveDashboard: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-4xl">
-			<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} className="mb-4 sm:mb-6">
+		<div className="container mx-auto px-2 sm:px-4 pb-4 pt-2 sm:pb-8 sm:pb-4 max-w-6xl">
+			<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 				<h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-left">Hospital Notifications Dashboard</h1>
 
 				{lastRefreshTime && (
@@ -86,14 +86,7 @@ const ResponsiveDashboard: React.FC = () => {
 				)}
 			</div>
 
-			<div className="space-y-4 sm:space-y-6">
-				<ResponsiveNotificationSection
-					title="Alerts"
-					total={alertItems.length}
-					items={alertItems}
-					type="alert"
-				/>
-
+			<div className="space-y-4 sm:space-y-6" style={{display:"flex", flexDirection:"row", gap:5, justifyContent: "space-between"}}>
 				<ResponsiveNotificationSection
 					title="Requests"
 					total={requestItems.length}
@@ -101,12 +94,21 @@ const ResponsiveDashboard: React.FC = () => {
 					type="request"
 				/>
 
-				<ResponsiveNotificationSection
-					title="Maintenance"
-					total={maintenanceItems.length}
-					items={maintenanceItems}
-					type="maintenance"
-				/>
+				<div style={{padding:0, margin:0}}>
+					<ResponsiveNotificationSection
+						title="Alerts"
+						total={alertItems.length}
+						items={alertItems}
+						type="alert"
+					/>
+
+					<ResponsiveNotificationSection
+						title="Maintenance"
+						total={maintenanceItems.length}
+						items={maintenanceItems}
+						type="maintenance"
+					/>
+				</div>
 			</div>
 		</div>
 	);
