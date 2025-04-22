@@ -54,11 +54,11 @@ const ResponsiveNotificationSection: React.FC<ResponsiveNotificationSectionProps
 			{/* Desktop Table View (hidden on small screens) */}
 			<div className={`hidden sm:block w-full ${colorClasses[type].content}`}>
 				{/* Table Header */}
-				<div className="grid grid-cols-[2fr_1fr_1fr_1fr] border-b border-gray-300 text-sm font-semibold">
+				<div className="grid grid-cols-[2fr_1fr_1fr] border-b border-gray-300 text-sm font-semibold">
 					<div className="p-2 text-left">Details</div>
 					<div className="p-2 text-left">Room Number</div>
 					{/* <div className="p-2 text-left">Category</div> */}
-					<div className="p-2 text-left">Project ID</div>
+					{/* <div className="p-2 text-left">Project ID</div> */}
 					<div className="p-2 text-left">Timestamp</div>
 				</div>
 
@@ -66,13 +66,13 @@ const ResponsiveNotificationSection: React.FC<ResponsiveNotificationSectionProps
 				{items.map((item, index) => (
 					<div
 						key={index}
-						className={`grid grid-cols-[2fr_1fr_1fr_1fr] text-sm ${index < items.length - 1 ? 'border-b border-gray-200' : ''
+						className={`grid grid-cols-[2fr_1fr_1fr] text-sm ${index < items.length - 1 ? 'border-b border-gray-200' : ''
 							}`}
 					>
 						<div className="p-2 text-left truncate">{item.details}</div>
 						<div className="p-2 text-left">{item.roomNumber}</div>
 						{/* <div className="p-2 text-left">{item?.category}</div> */}
-						<div className="p-2 text-left">{item?.projectID}</div>
+						{/* <div className="p-2 text-left">{item?.projectID}</div> */}
 						<div className="p-2 text-left">{item.timestamp}</div>
 					</div>
 				))}
