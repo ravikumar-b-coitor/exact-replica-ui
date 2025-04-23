@@ -61,7 +61,7 @@ const ResponsiveDashboard: React.FC = () => {
 	useEffect(() => {
 		fetchData(); // Initial fetch
 
-		const interval = setInterval(fetchData, 1 * 60 * 1000); // Refresh every 5 minutes
+		const interval = setInterval(fetchData, 5 * 60 * 1000); // Refresh every 5 minutes
 
 		return () => clearInterval(interval); // Clear interval on unmount
 	}, []);
