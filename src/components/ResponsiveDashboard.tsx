@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import ResponsiveNotificationSection from './ResponsiveNotificationSection';
 
+const API_URL = "https://backend-deploy-gdgwdra8cpgqbxda.southeastasia-01.azurewebsites.net/dashboard";
+
 const ResponsiveDashboard: React.FC = () => {
 	const [alertItems, setAlertItems] = React.useState([]);
 	const [requestItems, setRequestItems] = React.useState([]);
@@ -10,13 +12,15 @@ const ResponsiveDashboard: React.FC = () => {
 
 	const fetchData = async () => {
 		try {
-			const response = await fetch("https://backend-deploy-gdgwdra8cpgqbxda.southeastasia-01.azurewebsites.net/dashboard");
+			const response = await fetch(API_URL);
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! Status: ${response.status}`);
 			}
 
 			const data = await response.json();
+
+			const sortByTimestampDesc = (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
 
 			const alerts = data.events
 				.filter((item) => item.type === "emergency")
@@ -25,7 +29,8 @@ const ResponsiveDashboard: React.FC = () => {
 					roomNumber: item.room_number,
 					timestamp: item.timestamp,
 					projectID: "-",
-				}));
+				}))
+				.sort(sortByTimestampDesc);
 
 			const requests = data.events
 				.filter((item) => item.type === "request")
@@ -34,7 +39,8 @@ const ResponsiveDashboard: React.FC = () => {
 					roomNumber: item.room_number,
 					timestamp: item.timestamp,
 					projectID: "-",
-				}));
+				}))
+				.sort(sortByTimestampDesc);
 
 			const maintenance = data.events
 				.filter((item) => item.type === "maintenance")
@@ -43,14 +49,15 @@ const ResponsiveDashboard: React.FC = () => {
 					roomNumber: item.room_number,
 					timestamp: item.timestamp,
 					projectID: "-",
-				}));
+				}))
+				.sort(sortByTimestampDesc);
 
 			setAlertItems(alerts);
 			setRequestItems(requests);
 			setMaintenanceItems(maintenance);
 
 			// Set current time as last refresh time
-			const currentTime = new Date().toLocaleString();
+			const currentTime = new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
 			setLastRefreshTime(currentTime);
 
 		} catch (error) {
