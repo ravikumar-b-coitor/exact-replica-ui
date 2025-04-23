@@ -45,8 +45,8 @@ const ResponsiveNotificationSection: React.FC<ResponsiveNotificationSectionProps
 			{/* Header */}
 			<div className={`flex justify-between px-4 py-2 ${colorClasses[type].header}`}>
 				<h2 className="font-bold">{title}</h2>
-				<div className="flex text-right">
-					<div className="text-xs sm:text-base font-bold pr-5">Total {title}</div>
+				<div className="text-right">
+					<div className="text-xs sm:text-base font-bold">Total {title}</div>
 					<div>{total}</div>
 				</div>
 			</div>
